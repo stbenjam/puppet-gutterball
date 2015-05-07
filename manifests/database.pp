@@ -9,6 +9,11 @@ class gutterball::database{
     auth_method => 'password',
   }
 
+  # Prevents errors if run from /root etc.
+  Postgresql_psql {
+    cwd => '/',
+  }
+
   postgresql::server::db { 'gutterball':
     user     => $gutterball::dbuser,
     password => $gutterball::dbpassword,
