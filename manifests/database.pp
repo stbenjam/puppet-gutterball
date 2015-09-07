@@ -18,6 +18,8 @@ class gutterball::database {
   postgresql::server::db { 'gutterball':
     user     => $gutterball::dbuser,
     password => $gutterball::dbpassword,
+    encoding => 'utf8',
+    locale   => 'en_US.utf8',
   } ~>
   file { '/usr/bin/gutterball-db':
     ensure  => file,
