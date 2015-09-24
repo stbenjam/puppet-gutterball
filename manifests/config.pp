@@ -6,12 +6,6 @@ class gutterball::config(
   $dbpass            = $::gutterball::dbpassword,
   $keystore_password = $::gutterball::keystore_password,
 ){
-  user { 'gutterball':
-    ensure => present,
-  }->
-  group {'gutterball':
-    ensure => present,
-  }
 
   file { '/etc/gutterball':
     ensure => directory,
