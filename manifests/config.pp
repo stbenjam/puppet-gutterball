@@ -5,8 +5,8 @@ class gutterball::config(
   $dbuser            = $::gutterball::dbuser,
   $dbpass            = $::gutterball::dbpassword,
   $keystore_password = $::gutterball::keystore_password,
+  $truststore_file   = $::gutterball::truststore_file,
 ){
-
   file { '/etc/gutterball':
     ensure => directory,
     mode   => '0775',
