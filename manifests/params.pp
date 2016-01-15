@@ -1,6 +1,7 @@
 # Gutterball Params
 class gutterball::params {
   $gutterball_conf_file = '/etc/gutterball/gutterball.conf'
+  $dbname = 'gutterball'
   $dbuser = 'gutterball'
   $dbpassword = 'gutterball'
   $keystore_password = undef

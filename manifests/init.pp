@@ -5,6 +5,9 @@
 # $gutterball_conf_file::   Gutterball configuration file
 #                           default '/etc/gutterball/gutterball_conf_file'
 #
+# $dbname::                 The Gutterball database name;
+#                           default 'gutterball'
+#
 # $dbuser::                 The Gutterball database username;
 #                           default 'gutterball'
 #
@@ -23,6 +26,7 @@ class gutterball (
   $amqp_broker_host     = $::fqdn,
   $amqp_broker_port     = '5671',
   $gutterball_conf_file = $::gutterball::params::gutterball_conf_file,
+  $dbname               = $::gutterball::params::dbname,
   $dbuser               = $::gutterball::params::dbuser,
   $dbpassword           = $::gutterball::params::dbpassword,
   $keystore_password    = $::gutterball::params::keystore_password,
