@@ -16,11 +16,17 @@
 #
 # $tomcat::                 The system tomcat to use, tomcat6 on RHEL6 and tomcat on most Fedoras
 #
-# $keystore_password::      Password to keystore and trutstore
+# $keystore_file::          Path to keystore file
 #
-# $amqp_broker_host::      AMQP service's fqdn
+# $keystore_password::      Password for keystore
 #
-# $amqp_broker_port::      AMQP service's port number
+# $truststore_file::        Path to truststore file
+#
+# $truststore_password::    Password for trutstore
+#
+# $amqp_broker_host::       AMQP service's fqdn
+#
+# $amqp_broker_port::       AMQP service's port number
 #
 class gutterball (
   $amqp_broker_host     = $::fqdn,
@@ -29,14 +35,17 @@ class gutterball (
   $dbname               = $::gutterball::params::dbname,
   $dbuser               = $::gutterball::params::dbuser,
   $dbpassword           = $::gutterball::params::dbpassword,
+  $keystore_file        = $::gutterball::params::keystore_file,
   $keystore_password    = $::gutterball::params::keystore_password,
+  $truststore_file      = $::gutterball::params::truststore_file,
+  $truststore_password  = $::gutterball::params::truststore_password,
   $tomcat               = $::gutterball::params::tomcat,
 ) inherits gutterball::params {
+  validate_absolute_path([$keystore_file, $truststore_file])
 
   class { '::gutterball::install': } ~>
   class { '::gutterball::config': } ~>
   class { '::gutterball::database': } ~>
   class { '::gutterball::service': } ~>
   Class['gutterball']
-
 }
