@@ -29,8 +29,8 @@
 # $amqp_broker_port::       AMQP service's port number
 #
 class gutterball (
-  $amqp_broker_host     = $::fqdn,
-  $amqp_broker_port     = '5671',
+  $amqp_broker_host     = $::gutterball::params::amqp_broker_host,
+  $amqp_broker_port     = $::gutterball::params::amqp_broker_port,
   $gutterball_conf_file = $::gutterball::params::gutterball_conf_file,
   $dbname               = $::gutterball::params::dbname,
   $dbuser               = $::gutterball::params::dbuser,
